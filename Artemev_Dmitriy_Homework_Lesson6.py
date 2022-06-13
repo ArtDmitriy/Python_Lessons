@@ -15,23 +15,23 @@
 # Примечание: код должен работать даже с файлами, размер которых превышает объем ОЗУ компьютера.
 #
 
-#
-# def parse_log(pth_file):
-#
-#     if pth_file:
-#         with open(pth_file, "r", encoding="utf-8") as file:
-#             for line in file:
-#                 ip = line.split(" - - ")[0]
-#                 rsp_and_pth = line.split('"')[1]
-#                 rsp = rsp_and_pth.split()[0]
-#                 pth = rsp_and_pth.split()[1]
-#                 yield(ip, rsp, pth)
-#
-#
-# if __name__ == "__main__":
-#     a = parse_log("./nginx_logs.txt")
-#     for e in a:
-#         print(e)
+
+def parse_log(pth_file):
+
+    if pth_file:
+        with open(pth_file, "r", encoding="utf-8") as file:
+            for line in file:
+                ip = line.split(" - - ")[0]
+                rsp_and_pth = line.split('"')[1]
+                rsp = rsp_and_pth.split()[0]
+                pth = rsp_and_pth.split()[1]
+                yield(ip, rsp, pth)
+
+
+if __name__ == "__main__":
+    a = parse_log("./nginx_logs.txt")
+    for e in a:
+        print(e)
 
 
 # Задание №3. Есть два файла: в одном хранятся ФИО пользователей сайта, а в другом — данные об их хобби.
